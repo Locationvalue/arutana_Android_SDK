@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
                 arutanaInterstitial.show();
 
                 // showボタンを非活性にしておく
-                binding.btnShow.setEnabled(false);
+//                binding.btnShow.setEnabled(false);
             }
         });
     }
