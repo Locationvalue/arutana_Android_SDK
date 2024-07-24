@@ -1,5 +1,6 @@
 package io.dearone.arutana.sample.interstitial;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
+        view.setBackgroundColor(Color.GRAY);
         this.setContentView(view);
 
         this.arutanaInterstitial = new ArutanaInterstitial(this);
