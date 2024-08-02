@@ -20,5 +20,18 @@ public class MainActivity extends AppCompatActivity {
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
         this.setContentView(view);
+
+        this.movieAd = new ArutanaMovieAd(this);
+        this.movieAd.setLocationId("99999");
+
+        // テストモードを有効化
+        this.movieAd.setEnableTestMode(true);
+
+        this.binding.btnStopstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movieAd.show();
+            }
+        });
     }
 }

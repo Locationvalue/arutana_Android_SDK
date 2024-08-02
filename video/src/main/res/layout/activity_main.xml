@@ -27,14 +27,5 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
             android:text="stop&amp;start" />
-
-        <FrameLayout
-            android:id="@+id/ad_container"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
-
-        </FrameLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
