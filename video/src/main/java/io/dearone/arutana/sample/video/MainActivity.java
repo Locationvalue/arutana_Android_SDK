@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         this.movieAd = new ArutanaMovieAd(this);
         this.movieAd.setLocationId("99999");
 
+        this.movieAd.setUserId(null);
+        this.movieAd.setPositionY(0);
+
         // テストモードを有効化
         this.movieAd.setEnableTestMode(true);
 
