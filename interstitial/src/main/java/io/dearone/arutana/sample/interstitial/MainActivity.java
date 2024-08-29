@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
         this.arutanaInterstitial = new ArutanaInterstitial(this);
 
         // 管理画面から払い出された広告枠ID
-        this.arutanaInterstitial.setLocationId("48549");
+        this.arutanaInterstitial.setLocationId("4");
+
+        this.arutanaInterstitial.setUserId("1");
 
         // テストモードを有効化
         this.arutanaInterstitial.setEnableTestMode(true);
