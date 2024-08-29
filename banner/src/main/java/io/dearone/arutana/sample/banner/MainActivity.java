@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
 
         Log.d("debug", "ad:" + this.arutana);
 
-//        ViewGroup.LayoutParams initParams = this.binding.adContainer.getLayoutParams();
-//        initParams.width
-//        this.binding.adContainer.setLayoutParams(initParams);
         this.binding.adContainer.addView(this.arutana);
 
         this.binding.buttonReload.setOnClickListener(new View.OnClickListener() {
