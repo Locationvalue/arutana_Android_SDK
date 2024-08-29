@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
         this.setContentView(view);
 
         this.arutana = new Arutana(this);
-        this.arutana.setLocationId("00000");
+        this.arutana.setLocationId("1");
         this.arutana.setAdFrameSize(Arutana.AdFrameSize.SP);
         this.arutana.setAdBackGroundColor(Color.BLUE);
         this.arutana.setEnableTestMode(true);
@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
 //        initParams.width
 //        this.binding.adContainer.setLayoutParams(initParams);
         this.binding.adContainer.addView(this.arutana);
+
+        this.binding.buttonReload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MainActivity.this.arutana != null) {
+                    MainActivity.this.arutana.stop();
+                    MainActivity.this.arutana.start();
+                }
+            }
+        });
     }
 
     @Override
