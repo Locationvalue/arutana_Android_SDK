@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         this.setContentView(view);
 
         this.movieAd = new ArutanaMovieAd(this);
-        this.movieAd.setLocationId("99999");
+        this.movieAd.setLocationId("6");
 
-        this.movieAd.setUserId(null);
-        this.movieAd.setPositionY(0);
+        this.movieAd.setUserId("1");
+        this.movieAd.setPositionY(-100);
 
         // テストモードを有効化
         this.movieAd.setEnableTestMode(true);
