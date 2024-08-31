@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.dearone.arutana.Arutana;
+import io.dearone.arutana.ArutanaErrorCode;
 import io.dearone.arutana.ArutanaListener;
 import io.dearone.arutana.sample.banner.databinding.ActivityMainBinding;
 
