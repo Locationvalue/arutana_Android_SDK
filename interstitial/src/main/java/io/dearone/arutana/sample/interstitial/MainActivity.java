@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.arutanaInterstitial.setUserId("1");
 
+        this.arutanaInterstitial.setPositionY(-300);
+
         // テストモードを有効化
         this.arutanaInterstitial.setEnableTestMode(true);
 
