@@ -28,8 +28,16 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
-        view.setBackgroundColor(Color.GRAY);
+        view.setBackgroundColor(Color.WHITE);
         this.setContentView(view);
+
+        //TODO: テスト用
+        this.binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(MainActivity.LOGTAG, "onClick");
+            }
+        });
 
         this.arutanaInterstitial = new ArutanaInterstitial(this);
 
@@ -39,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
         this.arutanaInterstitial.setUserId("1");
 
         this.arutanaInterstitial.setPositionY(-300);
+
+        this.arutanaInterstitial.setTextColor(Color.YELLOW);
 
         // テストモードを有効化
         this.arutanaInterstitial.setEnableTestMode(true);
