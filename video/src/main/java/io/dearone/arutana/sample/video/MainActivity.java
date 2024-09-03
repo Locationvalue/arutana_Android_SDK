@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
     @Override
     public void arutanaMovieReceiveAd() {
         Log.d(MainActivity.LOGTAG, "Received an ad.");
+        this.movieAd.show();
     }
 
     @Override
