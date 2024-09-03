@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.arutanaInterstitial.setPositionY(-300);
 
-        this.arutanaInterstitial.setTextColor(Color.YELLOW);
+        this.arutanaInterstitial.setAdTextColor(Color.YELLOW);
+        this.arutanaInterstitial.setAdBackgroundColor(Color.GREEN);
 
         // テストモードを有効化
         this.arutanaInterstitial.setEnableTestMode(true);
