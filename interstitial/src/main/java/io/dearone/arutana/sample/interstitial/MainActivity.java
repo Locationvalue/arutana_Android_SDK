@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 //                binding.btnShow.setEnabled(false);
             }
         });
+
+        this.arutanaInterstitial.show();
     }
 
     @Override

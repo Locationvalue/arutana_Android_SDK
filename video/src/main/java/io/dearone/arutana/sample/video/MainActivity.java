@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
             }
         });
 
-        this.movieAd.preload();
+//        this.movieAd.preload();
+        this.movieAd.show();
     }
 
     @Override
