@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
     @Override
     protected void onStop() {
         // 広告非表示
-        this.arutanaInterstitial.dismiss();
+//        this.arutanaInterstitial.dismiss();
 
         super.onStop();
     }

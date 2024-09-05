@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
 
         this.movieAd.setUserId("1");
         this.movieAd.setTopMargin(10);
+//        this.movieAd.setBottomMargin(100);
 
         // テストモードを有効化
         this.movieAd.setEnableTestMode(true);
