@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
 
     @Override
     public void onFailedToReceiveAd(ArutanaErrorCode arutanaErrorCode) {
-        Log.d(MainActivity.LOGTAG, "Failed to receive an ad:$code");
+        Log.d(MainActivity.LOGTAG, "Failed to receive an ad:" + arutanaErrorCode);
         switch (arutanaErrorCode) {
             case EXCEED_LIMIT:      // エラー多発
             case NEED_CONNECTION:   // ネットワーク不通

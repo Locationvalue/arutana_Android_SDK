@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
 
     @Override
     public void arutanaMovieFailedToReceiveAd(ArutanaErrorCode arutanaErrorCode) {
-        Log.d(MainActivity.LOGTAG, "Failed to receive an ad.");
+        Log.d(MainActivity.LOGTAG, "Failed to receive an ad.:" + arutanaErrorCode);
         // ネットワーク不通/エラー多発/広告レスポンスなし 以外はリトライしてください
         switch (arutanaErrorCode) {
             case EXCEED_LIMIT:      // エラー多発

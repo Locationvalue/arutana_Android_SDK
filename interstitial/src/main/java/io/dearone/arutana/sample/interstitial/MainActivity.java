@@ -130,39 +130,4 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
                 break;
         }
     }
-
-    /*
-    @Override
-    public void onCloseInterstitial() {
-        Log.d(MainActivity.LOGTAG, "Did close interstitial ads.");
-    }
-
-    @Override
-    public void onReceiveAd() {
-        Log.d(MainActivity.LOGTAG, "Received an ad.");
-        this.binding.btnShow.setEnabled(true);
-    }
-
-    @Override
-    public void onFailedToReceiveAd(ArutanaErrorCode arutanaErrorCode) {
-        Log.d(MainActivity.LOGTAG, "Failed to receive an ad.");
-        // ネットワーク不通/エラー多発/広告レスポンスなし 以外はリトライしてください
-        switch (arutanaErrorCode) {
-            case EXCEED_LIMIT:      // エラー多発
-            case NEED_CONNECTION:   // ネットワーク不通
-            case NO_AD:             // 広告レスポンスなし
-                break;
-            default:
-                if (this.arutanaInterstitial != null) {
-                    this.arutanaInterstitial.preload();
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void onClickAd() {
-        Log.d(MainActivity.LOGTAG, "Did click ad.");
-    }
-    */
 }
