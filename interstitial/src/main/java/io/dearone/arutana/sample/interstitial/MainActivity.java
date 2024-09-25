@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
         this.binding.btnPreload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 広告リクエスト
                 arutanaInterstitial.preload();
             }
         });
