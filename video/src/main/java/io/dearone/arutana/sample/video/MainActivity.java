@@ -27,37 +27,26 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
         this.setContentView(view);
 
         this.movieAd = new ArutanaMovieAd(this);
-        this.movieAd.setLocationId("6");
-
+        this.movieAd.setLocationId("6"); // 広告枠ID
+        this.movieAd.setUserId("xxxx"); // ユーザーがログインしている場合、会員ID
         this.movieAd.setAdListener(this);
-
-        this.movieAd.setUserId("1");
-//        this.movieAd.setTopMargin(10);
-        this.movieAd.setBottomMargin(1);
-
-        // テストモードを有効化
-        this.movieAd.setEnableTestMode(true);
+        this.movieAd.setEnableTestMode(true); // テストモードを有効化. 本番リリース時は削除する
+        this.movieAd.preload(); // 広告の表示準備を開始
 
         this.binding.btnStopstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                movieAd.show();
+                movieAd.preload();
             }
         });
 
-//        this.movieAd.preload();
-        this.movieAd.show();
-    }
 
-    @Override
-    public void arutanaMovieNonad() {
-        Log.d(MainActivity.LOGTAG, "No ad.");
     }
 
     @Override
     public void arutanaMovieReceiveAd() {
         Log.d(MainActivity.LOGTAG, "Received an ad.");
-        this.movieAd.show();
+        this.movieAd.show(); // 広告の表示準備が完了したら広告を表示する
     }
 
     @Override
@@ -77,25 +66,16 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
 
     @Override
     public void arutanaMovieStartFull() {
-        Log.d(MainActivity.LOGTAG, "Movie start.");
+        Log.d(MainActivity.LOGTAG, "Fullscreen start.");
     }
 
     @Override
     public void arutanaMovieEndFull() {
-        Log.d(MainActivity.LOGTAG, "Movie end.");
+        Log.d(MainActivity.LOGTAG, "Fullscreen end.");
     }
 
     @Override
     public void arutanaMovieFailedToReceiveAd(ArutanaErrorCode arutanaErrorCode) {
         Log.d(MainActivity.LOGTAG, "Failed to receive an ad.:" + arutanaErrorCode);
-        // ネットワーク不通/エラー多発/広告レスポンスなし 以外はリトライしてください
-        switch (arutanaErrorCode) {
-            case EXCEED_LIMIT:      // エラー多発
-            case NEED_CONNECTION:   // ネットワーク不通
-            case NO_AD:             // 広告レスポンスなし
-                break;
-            default:
-                break;
-        }
     }
 }

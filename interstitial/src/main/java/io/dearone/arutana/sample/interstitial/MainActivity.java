@@ -13,10 +13,7 @@ import io.dearone.arutana.interstitial.ArutanaInterstitial;
 import io.dearone.arutana.interstitial.ArutanaInterstitialListener;
 import io.dearone.arutana.sample.interstitial.databinding.ActivityMainBinding;
 
-//import io.dearone.arutana.sample.interstitial.
-
 public class MainActivity extends AppCompatActivity implements ArutanaInterstitialListener {
-//public class MainActivity extends AppCompatActivity {
     private static final String LOGTAG = "MainActivity";
 
     private ActivityMainBinding binding;
@@ -28,34 +25,14 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
-        view.setBackgroundColor(Color.WHITE);
         this.setContentView(view);
 
-        //TODO: テスト用
-        this.binding.button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(MainActivity.LOGTAG, "onClick");
-            }
-        });
-
         this.arutanaInterstitial = new ArutanaInterstitial(this);
-
-        // 管理画面から払い出された広告枠ID
-        this.arutanaInterstitial.setLocationId("4");
-
-        this.arutanaInterstitial.setUserId("1");
-
+        this.arutanaInterstitial.setLocationId("4"); // 管理画面から払い出された広告枠ID
+        this.arutanaInterstitial.setUserId("xxxx"); // ユーザーがログイン中の場合、会員ID
+        this.arutanaInterstitial.setEnableTestMode(true); // テストモードを有効化
         this.arutanaInterstitial.setAdListener(this);
-
-        this.arutanaInterstitial.setTopMargin(10);
-        this.arutanaInterstitial.setWidth(50);
-
-//        this.arutanaInterstitial.setAdTextColor(Color.YELLOW);
-//        this.arutanaInterstitial.setAdBackgroundColor(Color.GREEN);
-
-        // テストモードを有効化
-        this.arutanaInterstitial.setEnableTestMode(true);
+        this.arutanaInterstitial.preload(); // 広告表示準備を開始
 
         this.binding.btnPreload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,38 +42,25 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
             }
         });
 
-        this.binding.btnShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 広告表示
-                arutanaInterstitial.show();
 
-                // showボタンを非活性にしておく
-//                binding.btnShow.setEnabled(false);
-            }
-        });
-
-        this.arutanaInterstitial.show();
     }
 
     @Override
-    protected void onStop() {
-        // 広告非表示
-//        this.arutanaInterstitial.dismiss();
+    protected void onPause() {
+        super.onPause();
 
-        super.onStop();
+        // ActivityがPauseされた場合、広告を初期化
+        if (this.arutanaInterstitial != null) {
+            this.arutanaInterstitial.dismiss();
+        }
     }
 
-    //ArutanaInterstitialListener
-    @Override
-    public void arutanaInterstitialNonad(ArutanaInterstitial arutanaInterstitial) {
-        Log.d(MainActivity.LOGTAG, "No ad.");
-    }
-
+    // ArutanaInterstitialListener
     @Override
     public void arutanaInterstitialReceiveAd(ArutanaInterstitial arutanaInterstitial) {
         Log.d(MainActivity.LOGTAG, "Received an ad.");
-        this.binding.btnShow.setEnabled(true);
+        // 広告の表示準備に成功した場合、広告を表示する
+        this.arutanaInterstitial.show();
     }
 
     @Override
@@ -117,17 +81,5 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
     @Override
     public void arutanaInterstitialFailedToReceiveAd(ArutanaInterstitial arutanaInterstitial, ArutanaErrorCode arutanaErrorCode) {
         Log.d(MainActivity.LOGTAG, "Failed to receive an ad.");
-        // ネットワーク不通/エラー多発/広告レスポンスなし 以外はリトライしてください
-        switch (arutanaErrorCode) {
-            case EXCEED_LIMIT:      // エラー多発
-            case NEED_CONNECTION:   // ネットワーク不通
-            case NO_AD:             // 広告レスポンスなし
-                break;
-            default:
-                if (this.arutanaInterstitial != null) {
-                    this.arutanaInterstitial.preload();
-                }
-                break;
-        }
     }
 }

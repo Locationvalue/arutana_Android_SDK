@@ -29,14 +29,11 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
         this.setContentView(view);
 
         this.arutana = new Arutana(this);
-        this.arutana.setLocationId("1");
+        this.arutana.setLocationId("1"); // 広告枠ID
+        this.arutana.setUserId("xxxx"); // ユーザーがログイン中の場合、会員ID
         this.arutana.setAdFrameSize(Arutana.AdFrameSize.SP);
-        this.arutana.setAdBackGroundColor(Color.BLUE);
         this.arutana.setEnableTestMode(true);
         this.arutana.setAdListener(this);
-
-        Log.d("debug", "ad:" + this.arutana);
-
         this.binding.adContainer.addView(this.arutana);
 
         this.binding.buttonReload.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +51,13 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
     protected void onResume() {
         super.onResume();
 
-        // 広告の表示
+        // ActivityがResumeした場合、広告を再取得して表示する
         this.arutana.start();
     }
 
     @Override
     protected void onPause() {
-        // 広告の破棄
+        // ActivityがPauseした場合、広告を破棄する
         this.arutana.stop();
 
         super.onPause();
@@ -74,14 +71,6 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
     @Override
     public void onFailedToReceiveAd(ArutanaErrorCode arutanaErrorCode) {
         Log.d(MainActivity.LOGTAG, "Failed to receive an ad:" + arutanaErrorCode);
-        switch (arutanaErrorCode) {
-            case EXCEED_LIMIT:      // エラー多発
-            case NEED_CONNECTION:   // ネットワーク不通
-            case NO_AD:             // 広告レスポンスなし
-                break;
-            default:
-                break;
-        }
     }
 
     @Override

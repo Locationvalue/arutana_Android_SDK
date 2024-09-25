@@ -36,10 +36,9 @@ dependencies {
 
     implementation libs.appcompat
     implementation libs.material
-    implementation files('../libs/arutana-0.0.1.aar')
+    implementation libs.browser
+    implementation files('../libs/arutana-0.0.12.aar')
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-    //内部ブラウザ表示に必要
-    implementation libs.browser
 }
