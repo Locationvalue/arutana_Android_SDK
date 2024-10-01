@@ -37,7 +37,7 @@ dependencies {
     implementation libs.appcompat
     implementation libs.material
     implementation libs.browser
-    implementation files('../libs/arutana-0.0.13.aar')
+    implementation files('../libs/arutana-0.0.14.aar')
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
