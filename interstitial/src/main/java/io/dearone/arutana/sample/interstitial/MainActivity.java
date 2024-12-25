@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.logging.Logger;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,7 @@ import io.dearone.arutana.ArutanaErrorCode;
 import io.dearone.arutana.interstitial.ArutanaInterstitial;
 import io.dearone.arutana.interstitial.ArutanaInterstitialListener;
 import io.dearone.arutana.sample.interstitial.databinding.ActivityMainBinding;
+import io.dearone.arutana.utils.LogUtils;
 
 public class MainActivity extends AppCompatActivity implements ArutanaInterstitialListener {
     private static final String LOGTAG = "MainActivity";
@@ -50,7 +53,17 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         // ActivityがPauseされた場合、広告を初期化
         if (this.arutanaInterstitial != null) {
-            this.arutanaInterstitial.dismiss();
+            this.arutanaInterstitial.onPause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // 広告側にresumeを通知
+        if (this.arutanaInterstitial != null) {
+            this.arutanaInterstitial.onResume();
         }
     }
 
