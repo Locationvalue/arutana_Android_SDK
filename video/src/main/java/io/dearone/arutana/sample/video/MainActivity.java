@@ -55,6 +55,31 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
     }
 
     @Override
+    public void arutanaMovieStart() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieStart");
+    }
+
+    @Override
+    public void arutanaMovieFirstQuartile() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieFirstQuartile");
+    }
+
+    @Override
+    public void arutanaMovieMidQuartile() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieMidQuartile");
+    }
+
+    @Override
+    public void arutanaMovieThirdQuartile() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieThirdQuartile");
+    }
+
+    @Override
+    public void arutanaMovieComplete() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieComplete");
+    }
+
+    @Override
     public void arutanaMovieDidTapAd() {
         Log.d(MainActivity.LOGTAG, "Did click ad.");
     }
@@ -72,6 +97,16 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
     @Override
     public void arutanaMovieEndFull() {
         Log.d(MainActivity.LOGTAG, "Fullscreen end.");
+    }
+
+    @Override
+    public void arutanaMovieSoundMuted() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieSoundMuted.");
+    }
+
+    @Override
+    public void arutanaMovieSoundUnmuted() {
+        Log.d(MainActivity.LOGTAG, "arutanaMovieSoundUnmuted.");
     }
 
     @Override

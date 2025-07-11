@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import java.util.logging.Logger;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.UUID;
 
 import io.dearone.arutana.ArutanaErrorCode;
 import io.dearone.arutana.interstitial.ArutanaInterstitial;
 import io.dearone.arutana.interstitial.ArutanaInterstitialListener;
 import io.dearone.arutana.sample.interstitial.databinding.ActivityMainBinding;
-import io.dearone.arutana.utils.LogUtils;
+import io.dearone.arutana.utils.AdIdUtil;
 
 public class MainActivity extends AppCompatActivity implements ArutanaInterstitialListener {
     private static final String LOGTAG = "MainActivity";
@@ -28,51 +28,59 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
+        view.setBackgroundColor(Color.WHITE);
         this.setContentView(view);
 
         this.arutanaInterstitial = new ArutanaInterstitial(this);
-        this.arutanaInterstitial.setLocationId("4"); // 管理画面から払い出された広告枠ID
-        this.arutanaInterstitial.setUserId("xxxx"); // ユーザーがログイン中の場合、会員ID
-        this.arutanaInterstitial.setEnableTestMode(true); // テストモードを有効化
+
+        // 管理画面から払い出された広告枠ID
+        this.arutanaInterstitial.setLocationId("4");
+        this.arutanaInterstitial.setUserId("3287417794815");
         this.arutanaInterstitial.setAdListener(this);
-        this.arutanaInterstitial.preload(); // 広告表示準備を開始
+        this.arutanaInterstitial.setTopMargin(120);
+//        this.arutanaInterstitial.setWidth(50);
+//        this.arutanaInterstitial.setAdTextColor(Color.YELLOW);
+//        this.arutanaInterstitial.setAdBackgroundColor(Color.GREEN);
 
-        this.binding.btnPreload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arutanaInterstitial.preload();
-            }
+        // テストモードを有効化
+        this.arutanaInterstitial.setEnableTestMode(true);
+        this.requestWithAdTracking();
+
+        this.binding.btnPreload.setOnClickListener(v -> {
+            // 広告リロード
+            this.requestWithAdTracking();
         });
-
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        // ActivityがPauseされた場合、広告を初期化
-        if (this.arutanaInterstitial != null) {
-            this.arutanaInterstitial.onPause();
-        }
     }
 
     @Override
     protected void onResume() {
+        this.arutanaInterstitial.onResume();
         super.onResume();
+    }
 
-        // 広告側にresumeを通知
-        if (this.arutanaInterstitial != null) {
-            this.arutanaInterstitial.onResume();
-        }
+    @Override
+    protected void onPause() {
+        // 広告非表示
+        this.arutanaInterstitial.onPause();
+        super.onPause();
+    }
+
+    protected void requestWithAdTracking() {
+        AdIdUtil.requestAdIdAsync(getApplicationContext(), new AdIdUtil.AdIdCallback() {
+            @Override
+            public void onAdIdReady(String adId, boolean isLimitAdTracking) {
+                Log.d(MainActivity.LOGTAG, adId);
+                arutanaInterstitial.setAdId(adId);
+                arutanaInterstitial.preload();
+            }
+        });
     }
 
     // ArutanaInterstitialListener
     @Override
     public void arutanaInterstitialReceiveAd(ArutanaInterstitial arutanaInterstitial) {
         Log.d(MainActivity.LOGTAG, "Received an ad.");
-        // 広告の表示準備に成功した場合、広告を表示する
-        this.arutanaInterstitial.show();
+        this.arutanaInterstitial.showAsync();
     }
 
     @Override
@@ -92,6 +100,6 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
     @Override
     public void arutanaInterstitialFailedToReceiveAd(ArutanaInterstitial arutanaInterstitial, ArutanaErrorCode arutanaErrorCode) {
-        Log.d(MainActivity.LOGTAG, "Failed to receive an ad.");
+        Log.d(MainActivity.LOGTAG, "Failed to receive an ad. " + arutanaErrorCode);
     }
 }
