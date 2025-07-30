@@ -124,6 +124,12 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 3. **広告の事前読み込みと表示**  
    `preload` メソッドを使用して広告を事前に読み込みます。広告の準備が完了すると、`arutanaInterstitialReceiveAd` メソッドが呼び出され、その中で **show** メソッドを使って広告を表示します。
 
+**`注意事項`**
+
+モーダル配置デフォルト値を設定しない場合、中央に表示されます。
+
+設定については[reference](./references/ref_ArutanaInterstitialAd.md)をご参照ください。
+
 ### 3. 広告イベントのハンドリング
 
 Arutana SDK のリスナーインターフェースを使用して、広告の受信やタップに対する処理を実装します。以下のメソッドを適宜実装してください。
@@ -150,3 +156,11 @@ this.arutanaInterstitial.setEnableTestMode(true);
 ## まとめ
 
 以上で、Arutana 広告SDK を使用したモーダル広告の実装は完了です。このマニュアルに従って、正しく広告を表示できることを確認してください。
+
+## 注意事項
+
+### 広告枠IDについて
+
+テスト、本番で広告枠IDが違います。
+
+IDの間違いによる表示間違い事故が発生していますので、IDコピーの際お間違いがないように注意をお願いします。
