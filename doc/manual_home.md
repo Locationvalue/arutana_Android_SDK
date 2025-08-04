@@ -8,6 +8,7 @@
 - [モーダル広告導入手順](./modal_ad.md)
 - [動画広告導入手順](./movie_ad.md)
 - [モーダル広告および動画広告の表示順序制御について](./control_modal_and_movie.md)
+- [Advertising IDを利用した配信実施時の実装方法について](./advertising_id.md)
 
 # リファレンス
 
