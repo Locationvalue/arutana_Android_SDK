@@ -32,8 +32,29 @@
 ### `void arutanaMovieStartFull()`
 動画広告の全画面表示が開始された際に呼び出されるメソッドです。
 
+### `void arutanaMovieStart()`
+  動画広告が再生された際に呼び出される
+
+### `void arutanaMovieFirstQuartile()`
+  動画広告が25%再生された際に呼び出されるメソッドです。
+
+### `void arutanaMovieMidQuartile()`
+  動画広告が50%再生された際に呼び出されるメソッドです。
+
+### `void arutanaMovieThirdQuartile()`
+  動画広告が75%再生された際に呼び出されるメソッドです。
+
+### `void arutanaMovieComplete()`
+  動画広告が再生完了された際に呼び出されるメソッドです。
+
 ### `void arutanaMovieEndFull()`
-動画広告の全画面表示が終了した際に呼び出されるメソッドです。
+  動画広告が全画面終了された際に呼び出されるメソッドです。
+
+### `void arutanaMovieSoundMuted()`
+  動画広告がミュートされた際に呼び出されるメソッドです。
+
+### `void arutanaMovieSoundUnmuted()`
+  動画広告がミュート解除された際に呼び出されるメソッドです。
 
 ### `void arutanaMovieFailedToReceiveAd(ArutanaErrorCode code)`
 動画広告の取得に失敗した際に呼び出されるメソッドです。

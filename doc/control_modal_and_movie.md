@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
 7. **特定条件下でのポップアップ待ち合わせ処理(ModuleAppご利用のお客様向け)**
    - ModuleApp 1.0、ModuleApp 2.0、ARUTANA SDKを導入されている場合、それぞれ待ち合わせ処理が必要になります。
-   - ARUTANA SDKの実装により特定のお客様のアプリにはホーム画面に表示するポップアップ型のコンテンツが合計つ存在することになります。
+   - ARUTANA SDKの実装により特定のお客様のアプリにはホーム画面に表示するポップアップ型のコンテンツが合計3つ存在することになります。
      - ①フローティング広告（MA1.0）
      - ②アプリ内メッセージモーダル（MA2.0）
      - ③ARUTANA広告モーダル、動画
