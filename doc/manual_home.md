@@ -12,7 +12,7 @@
 
 # リファレンス
 
-- [リファレンスマニュアル](./references/refernces.md)
+- [リファレンスマニュアル](./references/references.md)
 - [本番配信前の動作確認について](./references/ref_delivery_precheck.md)
 - [Listenerについて](./references/ref_listener.md)
 - [Proguardの設定について](./references/ref_proguard.md)
