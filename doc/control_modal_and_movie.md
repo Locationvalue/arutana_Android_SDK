@@ -126,11 +126,11 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
    - モーダル広告を優先的に表示することで、ユーザーへの負担を軽減します。
    - 動画広告はモーダル広告の次に表示されるように制御し、広告効果を最大化します。
 
-6. **フローティング広告との順番待ち処理(ModuleAppご利用のお客様向け)**
-   - ModuleApp 1.0の場合はフローティング広告 → ARUTANAモーダルの表示順になるように処理追加が必要です。
+6. **フローティング広告との順番待ち処理(ModuleAppsご利用のお客様向け)**
+   - ModuleApps 1.0の場合はフローティング広告 → ARUTANAモーダルの表示順になるように処理追加が必要です。
 
-7. **特定条件下でのポップアップ待ち合わせ処理(ModuleAppご利用のお客様向け)**
-   - ModuleApp 1.0、ModuleApp 2.0、ARUTANA SDKを導入されている場合、それぞれ待ち合わせ処理が必要になります。
+7. **特定条件下でのポップアップ待ち合わせ処理(ModuleAppsご利用のお客様向け)**
+   - ModuleApps 1.0、ModuleApps 2.0、ARUTANA SDKを導入されている場合、それぞれ待ち合わせ処理が必要になります。
    - ARUTANA SDKの実装により特定のお客様のアプリにはホーム画面に表示するポップアップ型のコンテンツが合計3つ存在することになります。
      - ①フローティング広告（MA1.0）
      - ②アプリ内メッセージモーダル（MA2.0）
