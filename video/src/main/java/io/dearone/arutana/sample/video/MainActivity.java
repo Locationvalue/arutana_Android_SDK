@@ -11,6 +11,7 @@ import io.dearone.arutana.ArutanaErrorCode;
 import io.dearone.arutana.video.ArutanaMovieAd;
 import io.dearone.arutana.sample.video.databinding.ActivityMainBinding;
 import io.dearone.arutana.video.ArutanaMovieListener;
+import io.dearone.arutana.utils.AdIdUtil;
 
 public class MainActivity extends AppCompatActivity implements ArutanaMovieListener {
     private ActivityMainBinding binding;
@@ -31,7 +32,18 @@ public class MainActivity extends AppCompatActivity implements ArutanaMovieListe
         this.movieAd.setUserId("xxxx"); // ユーザーがログインしている場合、会員ID
         this.movieAd.setAdListener(this);
         this.movieAd.setEnableTestMode(true); // テストモードを有効化. 本番リリース時は削除する
-        this.movieAd.preload(); // 広告の表示準備を開始
+        // 広告表示準備を開始(下記1か2の処理どちらかを選択してください)
+        // 1. Advertising IDを使った配信をしない場合
+        this.movieAd.preload();
+        // 2. Advertising IDを使った配信をする場合(サンプルコード上はコメントアウトしています)
+        //AdIdUtil.requestAdIdAsync(getApplicationContext(), new AdIdUtil.AdIdCallback() {
+        //    @Override
+        //    public void onAdIdReady(String adId) {
+        //        // 取得した広告IDをセット
+        //        movieAd.setAdId(adId);
+        //        movieAd.preload();
+        //    }
+        //});
 
         this.binding.btnStopstart.setOnClickListener(new View.OnClickListener() {
             @Override

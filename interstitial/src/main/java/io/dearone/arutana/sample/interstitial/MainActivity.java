@@ -14,6 +14,7 @@ import io.dearone.arutana.ArutanaErrorCode;
 import io.dearone.arutana.interstitial.ArutanaInterstitial;
 import io.dearone.arutana.interstitial.ArutanaInterstitialListener;
 import io.dearone.arutana.sample.interstitial.databinding.ActivityMainBinding;
+import io.dearone.arutana.utils.LogUtils;
 import io.dearone.arutana.utils.AdIdUtil;
 
 public class MainActivity extends AppCompatActivity implements ArutanaInterstitialListener {
@@ -32,6 +33,23 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
         this.setContentView(view);
 
         this.arutanaInterstitial = new ArutanaInterstitial(this);
+
+        this.arutanaInterstitial.setLocationId("4"); // 管理画面から払い出された広告枠ID
+        this.arutanaInterstitial.setUserId("xxxx"); // ユーザーがログイン中の場合、会員ID
+        this.arutanaInterstitial.setEnableTestMode(true); // テストモードを有効化
+        this.arutanaInterstitial.setAdListener(this);
+        // 広告表示準備を開始(下記1か2の処理どちらかを選択してください)
+        // 1. Advertising IDを使った配信をしない場合
+        this.arutanaInterstitial.preload();
+        // 2. Advertising IDを使った配信をする場合(サンプルコード上はコメントアウトしています)
+        //AdIdUtil.requestAdIdAsync(getApplicationContext(), new AdIdUtil.AdIdCallback() {
+        //    @Override
+        //    public void onAdIdReady(String adId) {
+        //        // 取得した広告IDをセット
+        //        arutanaInterstitial.setAdId(adId);
+        //        arutanaInterstitial.preload();
+        //    }
+        //});
 
         // 管理画面から払い出された広告枠ID
         this.arutanaInterstitial.setLocationId("4");
