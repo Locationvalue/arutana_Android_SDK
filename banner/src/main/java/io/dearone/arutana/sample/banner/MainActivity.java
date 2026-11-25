@@ -16,6 +16,9 @@ import io.dearone.arutana.sample.banner.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements ArutanaListener {
     private static final String LOGTAG = "MainActivity";
+    // true にすると、dev 環境の Fluct 確認用の枠（1134）を表示する。
+    // この枠は Arutana の広告を返さず、Fluct の広告を表示する
+    private static final boolean USE_FLUCT_TEST_PLACEMENT = false;
 
     private ActivityMainBinding binding;
     private Arutana arutana = null;
@@ -29,7 +32,12 @@ public class MainActivity extends AppCompatActivity implements ArutanaListener {
         this.setContentView(view);
 
         this.arutana = new Arutana(this);
-        this.arutana.setLocationId("1"); // 広告枠ID
+        if (USE_FLUCT_TEST_PLACEMENT) {
+            this.arutana.setLocationId("1134"); // Fluct 確認用の広告枠ID
+            this.arutana.setEnableDevMode(true); // dev 環境に接続する
+        } else {
+            this.arutana.setLocationId("1"); // 広告枠ID
+        }
         this.arutana.setUserId("xxxx"); // ユーザーがログイン中の場合、会員ID
         this.arutana.setAdFrameSize(Arutana.AdFrameSize.SP);
         this.arutana.setEnableTestMode(true);

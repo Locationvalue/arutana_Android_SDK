@@ -16,6 +16,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // Fluct メディエーション（banner / interstitial）で使う FluctSDK
+        maven { url 'https://voyagegroup.github.io/FluctSDK-Android/m2/repository' }
     }
 }
 

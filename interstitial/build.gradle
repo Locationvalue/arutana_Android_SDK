@@ -37,6 +37,9 @@ dependencies {
     implementation libs.appcompat
     implementation libs.material
     implementation files('../libs/arutana-latest.aar')
+    // Fluct メディエーション: Arutana の広告がない枠で Fluct の広告を表示する
+    implementation files('../libs/arutana-fluct-adapter-0.0.1.aar')
+    implementation 'jp.fluct:FluctSDK:9.17.1'
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

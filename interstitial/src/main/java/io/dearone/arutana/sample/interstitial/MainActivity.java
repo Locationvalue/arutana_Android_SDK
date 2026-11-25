@@ -19,6 +19,9 @@ import io.dearone.arutana.utils.AdIdUtil;
 
 public class MainActivity extends AppCompatActivity implements ArutanaInterstitialListener {
     private static final String LOGTAG = "MainActivity";
+    // true にすると、dev 環境の Fluct 確認用の枠（1135）を表示する。
+    // この枠は Arutana の広告を返さず、Fluct の 300x250 の広告をモーダルの中に表示する
+    private static final boolean USE_FLUCT_TEST_PLACEMENT = false;
 
     private ActivityMainBinding binding;
     private ArutanaInterstitial arutanaInterstitial = null;
@@ -34,7 +37,12 @@ public class MainActivity extends AppCompatActivity implements ArutanaInterstiti
 
         this.arutanaInterstitial = new ArutanaInterstitial(this);
 
-        this.arutanaInterstitial.setLocationId("4"); // 管理画面から払い出された広告枠ID
+        if (USE_FLUCT_TEST_PLACEMENT) {
+            this.arutanaInterstitial.setLocationId("1135"); // Fluct 確認用の広告枠ID
+            this.arutanaInterstitial.setEnableDevMode(true); // dev 環境に接続する
+        } else {
+            this.arutanaInterstitial.setLocationId("4"); // 管理画面から払い出された広告枠ID
+        }
         this.arutanaInterstitial.setUserId("xxxx"); // ユーザーがログイン中の場合、会員ID
         this.arutanaInterstitial.setEnableTestMode(true); // テストモードを有効化
         this.arutanaInterstitial.setAdListener(this);
